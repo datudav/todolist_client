@@ -3,6 +3,7 @@ defmodule Todolistapp.TaskManager.Task do
   import Ecto.Changeset
   alias Todolistapp.TaskManager.Task
 
+  @primary_key {:id, :binary_id, autogenerate: true}
   schema "tasks" do
     field :description, :string
     field :title, :string
