@@ -1,0 +1,25 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <table class="text-left font-mono">
+    <thead>
+        <tr>
+          <th class="px-4 pt-4"><%= label f, :title %></th>
+          <th class="px-4 pt-4"><%= label f, :description %></th>
+          <th class="px-4 pt-4">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+      <td class="px-4"><%= text_input f, :title %><%= error_tag f, :title %></td>
+      <td class="px-4"><%= text_input f, :description %><%= error_tag f, :description %></td>
+      <td class="px-4">
+        <span><%= submit "Save" %></span>
+        <span><%= link "Back", to: Routes.task_path(@conn, :index) %></span>
+      </td>
+    </tbody>
+  </table>
+<% end %>

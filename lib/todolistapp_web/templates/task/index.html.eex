@@ -1,0 +1,25 @@
+<table class="text-left font-mono">
+  <thead>
+    <tr>
+      <th class="px-4 pt-4">Title</th>
+      <th class="px-4 pt-4">Description</th>
+      <th class="px-4 pt-4">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= for task <- @tasks do %>
+        <tr>
+          <td class="px-4"><%= task.title %></td>
+          <td class="px-4"><%= task.description %></td>
+
+          <td>
+            <span><%= link "Edit", to: Routes.task_path(@conn, :edit, task) %></span>
+            <span><%= link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"] %></span>
+          </td>
+        </tr>
+    <% end %>
+    <tr>
+      <td class="px-4"><%= link "Add New Task...", to: Routes.task_path(@conn, :new) %></td>
+    </tr>
+  </tbody>
+</table>
