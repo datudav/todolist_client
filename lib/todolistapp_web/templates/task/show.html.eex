@@ -1,18 +1,17 @@
-<h1>Show Task</h1>
-
-<ul>
-
-  <li>
-    <strong>Title:</strong>
-    <%= @task.title %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @task.description %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span>
-<span><%= link "Back", to: Routes.task_path(@conn, :index) %></span>
+<table class="text-left font-mono">
+  <thead>
+    <tr>
+      <th class="px-4 pt-4">Title</th>
+      <th class="px-4 pt-4">Description</th>
+      <th class="px-4 pt-4">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <td class="px-4"><%= @task.title %></td>
+    <td class="px-4"><%= @task.description %></td>
+    <td>
+      <span><%= link "Edit", to: Routes.task_path(@conn, :edit, @task) %></span>
+      <span><%= link "Home", to: Routes.task_path(@conn, :index) %></span>
+    </td>
+  </tbody>
+</table>
