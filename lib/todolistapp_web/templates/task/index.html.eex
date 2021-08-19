@@ -1,3 +1,18 @@
+<div class="grid grid-flow-row auto-rows-max rounded-none">
+  <div class="text-left font-sans m-1.5 border-0 rounded-none grid grid-cols-10">
+    <span class="col-span-2 text-xl font-bold pl-2 pb-4">Title</span>
+    <span class="col-span-8 text-xl font-bold">Description</span>
+    <%= for task <- @tasks do %>
+    <span class="col-span-2 text-base pl-2 py-2 border-b-2"><%= task.title %></span>
+    <span class="col-span-6 text-base py-2 border-b-2"><%= task.description %></span>
+    <span class="col-span-1 py-2 border-b-2"><%= link "Edit", to: Routes.task_path(@conn, :edit, task) %></span>
+    <span class="col-span-1 py-2 border-b-2"><%= link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"] %></span>
+    <% end %>
+    <span class="col-span-10 text-xl font-bold py-2"><%= link "Add New Task...", to: Routes.task_path(@conn, :new) %></span>
+  </div>
+</div>
+
+<!--
 <table class="text-left font-mono">
   <thead>
     <tr>
@@ -13,8 +28,7 @@
           <td class="px-4"><%= task.description %></td>
 
           <td>
-            <span><%= link "Edit", to: Routes.task_path(@conn, :edit, task) %></span>
-            <span><%= link "Delete", to: Routes.task_path(@conn, :delete, task), method: :delete, data: [confirm: "Are you sure?"] %></span>
+
           </td>
         </tr>
     <% end %>
@@ -23,3 +37,4 @@
     </tr>
   </tbody>
 </table>
+-->

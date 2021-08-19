@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>To-Do List</title>
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
+    <%# <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap"> %>
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
+    <header class="bg-purple-900 p-4 text-gray-50 font-mono text-3xl font-extrabold">Header</header>
     <main role="main">
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <nav class="bg-purple-500 p-4 text-gray-50 font-mono text-3xl font-extrabold">To-Do List</nav>
-      <%= @inner_content %>
+      <div class="mx-14 mt-8"><%= @inner_content %></div>
     </main>
   </body>
 </html>
