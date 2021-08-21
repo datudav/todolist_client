@@ -4,7 +4,8 @@ defmodule TodolistappWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_flash
+    plug :fetch_live_flash
+    plug :put_root_layout, {TodolistappWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -16,7 +17,11 @@ defmodule TodolistappWeb.Router do
   scope "/", TodolistappWeb do
     pipe_through :browser
 
-    resources "/tasks", TaskController, only: [:index, :show, :new, :create, :edit, :update, :delete]
+    live "/tasks", TaskLive.Index, :index
+    live "/tasks/new", TaskLive.Index, :new
+    live "/tasks/:id/edit", TaskLive.Index, :edit
+
+    # resources "/tasks", TaskController, only: [:index, :show, :new, :create, :edit, :update, :delete]
   end
 
   # Other scopes may use custom stacks.

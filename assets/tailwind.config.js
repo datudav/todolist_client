@@ -2,11 +2,17 @@ module.exports = {
     purge: [
         '../lib/todolistapp_web/templates/**/*.eex'
     ],
-    mode: 'jit',
     darkMode: false, // or 'media' or 'class'
     theme: {
-      extend: {},
+      extend: {
+        fontFamily: {
+          'poppins': ['"Poppins"']
+        }
+      },
     },
-    variants: {},
-    plugins: [],
+    variants: {
+      backgroundColor: ['responsive', 'dark', 'group-hover', 'focus-within', 'hover', 'focus'],
+      textColor: ['hover']
+    },
+    plugins: [],   
   }
