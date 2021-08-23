@@ -32,7 +32,7 @@ defmodule TodolistappWeb.TaskLive.FormComponent do
       {:ok, _task} ->
         {:noreply,
          socket
-         |> put_flash(:info, "Task updated successfully")
+         |> put_live_flash(:info, "Task updated successfully")
          |> push_redirect(to: socket.assigns.return_to)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
