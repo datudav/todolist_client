@@ -131,7 +131,7 @@ defmodule Todolistapp.TaskManager do
   defp set_unix_epoch(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{title: title, description: description}} ->
-        put_change(changeset, :rank, get_unix_epoch)
+        put_change(changeset, :rank, get_unix_epoch())
         _ ->
         changeset
     end
