@@ -11,12 +11,16 @@
   <div class="col-span-2 pl-2 pb-4">TITLE</div>
   <div class="col-span-8 pl-2 pb-4">DESCRIPTION</div>
   <%= for task <- @tasks do %>
-  <div class="group hover:bg-gray-200 col-span-10 grid grid-cols-10 pl-2 py-2 border-b-2 ">
+  <div id="<%= task.id %>" class="group hover:bg-gray-200 col-span-10 grid grid-cols-10 pl-2 py-2 border-b-2 ">
     <p class="col-span-2 group-hover:bg-gray-200"><%= task.title %></p>
     <p class="col-span-6 group-hover:bg-gray-200"><%= task.description %></p>
-    <p class="col-span-1 group-hover:bg-gray-200"><%= live_patch "Edit", to: Routes.task_index_path(@socket, :edit, task) %></p>
-    <p class="col-span-1 group-hover:bg-gray-200"><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: task.id, data: [confirm: "Are you sure?"] %></p>
+    <p class="col-span-2 group-hover:bg-gray-200 content-center">
+      <%= live_patch "EDIT", to: Routes.task_index_path(@socket, :edit, task)%>
+      <%= link "DELETE", to: "#", phx_click: "delete", phx_value_id: task.id, data: [confirm: "Are you sure?"]%>
+      <%= link "UP", to: "#", phx_click: "rank_up", phx_value_id: task.id%>
+      <%= link "DOWN", to: "#", phx_click: "rank_down", phx_value_id: task.id%>
+    </p>
   </div>
   <% end %>
-  <div class="col-span-10 pt-4"><%= live_patch "+", class: "phx-modal-button-input", to: Routes.task_index_path(@socket, :new) %></div>
+  <div class="col-span-14 pt-4"><%= live_patch "+", class: "phx-modal-button-input", to: Routes.task_index_path(@socket, :new) %></div>
 </div>

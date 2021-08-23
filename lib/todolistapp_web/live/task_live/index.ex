@@ -39,6 +39,22 @@ defmodule TodolistappWeb.TaskLive.Index do
     {:noreply, assign(socket, :tasks, list_tasks())}
   end
 
+  @impl true
+  def handle_event("rank_up", %{"id" => id}, socket) do
+    task = TaskManager.get_task!(id)
+    {:ok, _} = TaskManager.rank_up(task)
+
+    {:noreply, assign(socket, :tasks, list_tasks())}
+  end
+
+  @impl true
+  def handle_event("rank_down", %{"id" => id}, socket) do
+    task = TaskManager.get_task!(id)
+    {:ok, _} = TaskManager.rank_down(task)
+
+    {:noreply, assign(socket, :tasks, list_tasks())}
+  end
+
   defp list_tasks do
     TaskManager.list_tasks()
   end

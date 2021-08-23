@@ -7,6 +7,7 @@ defmodule Todolistapp.TaskManager.Task do
   schema "tasks" do
     field :description, :string
     field :title, :string
+    field :rank, :decimal
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule Todolistapp.TaskManager.Task do
   @doc false
   def changeset(%Task{} = task, attrs) do
     task
-    |> cast(attrs, [:title, :description])
+    |> cast(attrs, [:title, :description, :rank])
     |> validate_required([:title, :description])
   end
 end

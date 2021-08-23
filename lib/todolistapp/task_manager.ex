@@ -4,6 +4,7 @@ defmodule Todolistapp.TaskManager do
   """
 
   import Ecto.Query, warn: false
+  import Ecto.Changeset
   alias Todolistapp.Repo
 
   alias Todolistapp.TaskManager.Task
@@ -18,7 +19,9 @@ defmodule Todolistapp.TaskManager do
 
   """
   def list_tasks do
-    Repo.all(Task)
+    query = from t in Task,
+          order_by: [asc: t.rank]
+    Repo.all(query)
   end
 
   @doc """
@@ -52,6 +55,7 @@ defmodule Todolistapp.TaskManager do
   def create_task(attrs \\ %{}) do
     %Task{}
     |> Task.changeset(attrs)
+    |> set_unix_epoch
     |> Repo.insert()
   end
 
@@ -100,5 +104,42 @@ defmodule Todolistapp.TaskManager do
   """
   def change_task(%Task{} = task, attrs \\ %{}) do
     Task.changeset(task, attrs)
+  end
+
+  def rank_up(%Task{} = task) do
+    query = from t in Task,
+      select: t.rank,
+      where: t.rank < ^task.rank,
+      order_by: [desc: t.rank],
+      limit: 2
+      ranks = Repo.all(query)
+      new_rank = Decimal.div(Decimal.add(Enum.at(ranks, 0), Enum.at(ranks, 1)), 2)
+      update_task(task, %{rank: new_rank})
+  end
+
+  def rank_down(%Task{} = task) do
+    query = from t in Task,
+      select: t.rank,
+      where: t.rank > ^task.rank,
+      order_by: [asc: t.rank],
+      limit: 2
+      ranks = Repo.all(query)
+      new_rank = Decimal.div(Decimal.add(Enum.at(ranks, 0), Enum.at(ranks, 1)), 2)
+      update_task(task, %{rank: new_rank})
+  end
+
+  defp set_unix_epoch(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{title: title, description: description}} ->
+        put_change(changeset, :rank, get_unix_epoch)
+        _ ->
+        changeset
+    end
+  end
+
+  defp get_unix_epoch do
+    :calendar.universal_time()
+    |> :calendar.datetime_to_gregorian_seconds()
+    |> Kernel.-(62167219200)
   end
 end
