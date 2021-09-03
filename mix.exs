@@ -47,6 +47,7 @@ defmodule Todolistapp.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:phoenix_live_view, "~> 0.14.3"},
       {:floki, ">= 0.0.0", only: :test},
+      {:tesla, "~> 1.4"}
     ]
   end
 

@@ -23,7 +23,22 @@
   .main-content {
     margin: auto;
     margin-top: 25px;
-    width: 80%;
+    width: 90%;
+  }
+
+  .navbar {
+    width: 100%;
+    background-color: hsl(261, 39%, 49%);
+    overflow: auto;
+  }
+
+  .navbar a {
+    float: left;
+    text-align: center;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
   }
 
   .phx-no-feedback.invalid-feedback, .phx-no-feedback .invalid-feedback {
@@ -112,6 +127,12 @@
     font-weight: bold;
     padding: 12px 0px;
     text-transform: uppercase;
+  }
+
+  .phx-input-box {
+    width: 100%;
+    border-radius: 2px;
+    padding-right: 2px;
   }
   
   /* Alerts and form errors */

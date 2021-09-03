@@ -16,7 +16,8 @@ config :todolistapp, Todolistapp.Repo,
 # you can enable the server option below.
 config :todolistapp, TodolistappWeb.Endpoint,
   http: [port: 4002],
-  server: false
+  server: false,
+  api_base_url: "http://localhost:5000/api/v1"
 
 # Print only warnings and errors during test
 config :logger, level: :warn

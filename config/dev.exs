@@ -28,7 +28,8 @@ config :todolistapp, TodolistappWeb.Endpoint,
       "--watch-stdin",
       cd: Path.expand("../assets", __DIR__)
     ]
-  ]
+  ],
+  api_base_url: "http://localhost:5000/api/v1"
 
 # ## SSL Support
 #

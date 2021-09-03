@@ -10,6 +10,9 @@ use Mix.Config
 config :todolistapp,
   ecto_repos: [Todolistapp.Repo]
 
+config :todolistapp,
+  api_base_url: "http://localhost:5000/api/v1"
+
 # Configures the endpoint
 config :todolistapp, TodolistappWeb.Endpoint,
   url: [host: "localhost"],
