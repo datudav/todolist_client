@@ -1,0 +1,22 @@
+<div class="navbar">
+  <div class="w-4/5 m-auto">
+    <a href="#" class="text-4xl font-bold">BOARDMAN</a>
+  </div>
+</div>
+<div class="main-content">
+  <div>
+      <p class="text-6xl p-2 m-2 font-bold">Welcome, User!</p>
+  </div>
+  <div>
+    <%= live_render @conn, TodolistappWeb.Dashboard.Index,
+      id: "dashboard_index",
+      session: %{
+        "access_token" => @access_token,
+        "board" => @board,
+        "user_id" => @user_id,
+        "board_id" => @board_id,
+        "csrf_token" => Phoenix.Controller.get_csrf_token()
+      }
+    %>
+  </div>
+</div>

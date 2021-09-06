@@ -15,7 +15,7 @@ defmodule Todolistapp.Account do
   def sign_in(request) do
     with {:ok, %{:body => body, :status => status}} when status in @success_codes <-
       Tesla.post(client(), "/users/sign_in", %{:email => request["email"], :password => request["password"]}) do
-        {:ok, %{:email => body["data"]["email"], :user_id => body["data"]["user_id"]}}
+        {:ok, %{:email => body["data"]["email"], :user_id => body["data"]["user_id"], :token => body["data"]["token"]}}
     else
       {:ok, %{body: body}} -> {:error, body}
     end

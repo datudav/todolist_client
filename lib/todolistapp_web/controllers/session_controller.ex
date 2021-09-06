@@ -12,9 +12,9 @@ defmodule TodolistappWeb.SessionController do
     case Account.sign_in(params) do
       {:ok, body} ->
         conn
-        |> put_session(:user_id, body.user_id)
+        |> put_session(:current_user_id, body.user_id)
+        |> put_session(:access_token, body.token)
         |> put_flash(:info, "Sign in successful")
-        |> IO.inspect()
         |> redirect(to: Routes.dashboard_path(conn, :index))
       {:error, _body} ->
         conn

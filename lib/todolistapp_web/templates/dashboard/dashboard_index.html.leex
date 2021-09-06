@@ -1,0 +1,33 @@
+<div class="flex flex-col md:flex-row flex-wrap gap-2 mt-10">
+    <%= for list <- @board["data"] do %>
+    <div class="w-56 mt-6 bg-white shadow-lg mx-auto border-b-4 border-indigo-500 rounded-md overflow-hidden hover:shadow-2xl transition duration-500 transform hover:scale-105 cursor-pointer" >
+        <div class="bg-indigo-500 flex h-10 items-center">
+            <p class="ml-4 text-white uppercase"><%= list["title"] %></p>
+        </div>
+        <p class="py-6 px-6 text-md tracking-wide text-left"><%= list["description"] %></p>
+        <div class="flex justify-center px-5 mb-2 text-sm ">
+            <button type="button" class="border border-indigo-500 text-indigo-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-indigo-600 focus:outline-none focus:shadow-outline">
+                Details
+            </button>
+        </div>
+    </div>
+    <% end %>
+</div>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, TodolistappWeb.Dashboard.FormComponent,
+    id: @list.list_id || :new,
+    title: @page_title,
+    action: @live_action,
+    list: @list,
+    access_token: @access_token,
+    board_id: @board_id,
+    user_id: @user_id,
+    return_to: Routes.dashboard_path(@socket, :index) %>
+<% end %>
+
+<div class="mt-10 mr-10 float-right">
+    <%= form_for :add_list, "#", as: :add_list, phx_submit: "add_list"%>
+        <%= submit "+", class: "phx-modal-button-input"%>
+    </form>
+</div>

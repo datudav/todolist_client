@@ -23,12 +23,12 @@
   .main-content {
     margin: auto;
     margin-top: 25px;
-    width: 90%;
+    width: 80%;
   }
 
   .navbar {
     width: 100%;
-    background-color: hsl(261, 39%, 49%);
+    background-color: #6366F1;
     overflow: auto;
   }
 
@@ -94,14 +94,14 @@
   }
 
   .phx-modal-button-input {
-    background-color: hsl(261, 39%, 49%);
+    background-color: #6366F1;
     border: none;
     color: white;
     padding: 6px 16px;
     text-decoration: none;
     margin: 14px 2px 0px 2px;
     cursor: pointer;
-    width: 10%;
+    width: 100%;
     border-radius: 4px;
   }
 

@@ -4,7 +4,6 @@ defmodule TodolistappWeb.SessionLive.Index do
   alias Todolistapp.Account
 
   def mount(_params, _session, socket) do
-    IO.inspect(socket)
     {:ok, socket}
   end
 
@@ -14,8 +13,8 @@ defmodule TodolistappWeb.SessionLive.Index do
 
   def handle_event("sign_in", %{"sign_in" => params}, socket) do
     case Account.sign_in(params) do
-      {:ok, body} ->
-        {:noreply, put_flash(socket, :info, "Sign in successful")}
+      {:ok, _body} ->
+        {:noreply, socket}
       {:error, _body} ->
         {:noreply, put_flash(socket, :error, "Invalid credentials")}
     end

@@ -25,8 +25,6 @@ defmodule TodolistappWeb.Router do
     live "/tasks", TaskLive.Index, :index
     live "/tasks/new", TaskLive.Index, :new
     live "/tasks/:id/edit", TaskLive.Index, :edit
-
-    # resources "/tasks", TaskController, only: [:index, :show, :new, :create, :edit, :update, :delete]
   end
 
   # Other scopes may use custom stacks.
