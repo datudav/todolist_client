@@ -1,0 +1,16 @@
+<div class="main-content">
+  <div>
+      <p class="text-6xl py-2 my-2 font-bold">Sign In</p>
+  </div>
+  <%= f = form_for :sign_in, "#", as: :sign_in, phx_submit: "sign_in"%>
+    <%= label f, :email, class: "phx-modal-label"%>
+    <%= text_input f, :email, class: "phx-modal-text-input" %>
+    <%= error_tag f, :email %>
+
+    <%= label f, :password, class: "phx-modal-label" %>
+    <%= password_input f, :password, class: "phx-modal-text-input"%>
+    <%= error_tag f, :password %>
+
+    <%= submit "SIGN IN", class: "phx-modal-button-input-25", phx_disable_with: "Signing in..." %>
+  </form>
+</div>

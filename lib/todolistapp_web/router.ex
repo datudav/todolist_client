@@ -17,11 +17,15 @@ defmodule TodolistappWeb.Router do
   scope "/", TodolistappWeb do
     pipe_through :browser
 
-    live "/tasks", TaskLive.Index, :index
-    live "/tasks/new", TaskLive.Index, :new
-    live "/tasks/:id/edit", TaskLive.Index, :edit
+    post "/sign_in", SessionController, :sign_in
+    resources "/sign_in", SessionController, only: [:index]
+    resources "/dashboard", DashboardController, only: [:index]
+    resources "/list", ListController, only: [:index]
 
-    # resources "/tasks", TaskController, only: [:index, :show, :new, :create, :edit, :update, :delete]
+    # live "/tasks", DashboardLive.ListIndex, :index
+    # # live "/tasks", TaskLive.Index, :index
+    # live "/tasks/new", TaskLive.Index, :new
+    # live "/tasks/:id/edit", TaskLive.Index, :edit
   end
 
   # Other scopes may use custom stacks.
