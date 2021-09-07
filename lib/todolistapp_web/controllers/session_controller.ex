@@ -14,7 +14,7 @@ defmodule TodolistappWeb.SessionController do
         conn
         |> put_session(:current_user_id, body.user_id)
         |> put_session(:access_token, body.token)
-        |> put_flash(:info, "Sign in successful")
+        # |> put_flash(:info, "Sign in successful")
         |> redirect(to: Routes.dashboard_path(conn, :index))
       {:error, _body} ->
         conn

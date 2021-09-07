@@ -17,6 +17,10 @@ defmodule TodolistappWeb.Dashboard.Index do
     {:noreply, apply_action(socket, :new, params)}
   end
 
+  def handle_event("list_tasks", params, socket) do
+
+  end
+
   # def handle_event("delete", %{"id" => id}, socket) do
   #   task = TaskManager.get_task!(id)
   #   {:ok, _} = TaskManager.delete_task(task)
@@ -30,6 +34,7 @@ defmodule TodolistappWeb.Dashboard.Index do
     |> assign(:list, %List{})
     |> assign(:live_action, :new)
   end
+
 
   def render(assigns) do
     Phoenix.View.render(TodolistappWeb.DashboardView, "dashboard_index.html", assigns)

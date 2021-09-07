@@ -134,6 +134,19 @@
     border-radius: 2px;
     padding-right: 2px;
   }
+
+  .card-button{
+    color: rgb(99, 102, 241);
+    background-color: white;
+    border-radius: 0.375rem;
+    width:70px;
+    height:30px;
+  }
+
+  .card-button:hover {
+    color: white;
+    background-color: rgb(99, 102, 241);
+  }
   
   /* Alerts and form errors */
   .alert {

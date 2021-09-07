@@ -1,11 +1,6 @@
-<div class="navbar">
-  <div class="w-4/5 m-auto">
-    <a href="#" class="text-4xl font-bold">BOARDMAN</a>
-  </div>
-</div>
 <div class="main-content">
   <div>
-      <p class="text-6xl p-2 m-2 font-bold">Welcome, User!</p>
+      <p class="text-6xl py-2 my-2 font-bold">Welcome, User!</p>
   </div>
   <div>
     <%= live_render @conn, TodolistappWeb.Dashboard.Index,
