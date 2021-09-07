@@ -6,9 +6,7 @@
         </div>
         <p class="py-6 px-6 text-md tracking-wide text-left"><%= list["description"] %></p>
         <div class="flex justify-center px-5 mb-2 text-sm ">
-            <%= form_for :list_tasks, "#", as: :list_tasks, phx_submit: "list_tasks"%>
-            <%= submit "Details", class: "card-button"%>
-            </form>
+            <%= submit "Details", class: "card-button", phx_click: "list_tasks", phx_value_id: list["list_id"] %>
         </div>
     </div>
     <% end %>

@@ -1,7 +1,7 @@
 defmodule TodolistappWeb.TaskLive.Index do
   use TodolistappWeb, :live_view
-  alias Todolistapp.TaskManager
-  alias Todolistapp.TaskManager.Task
+  alias Todolistapp.Task
+  alias Todolistapp.Task.Task
 
   @impl true
   def mount(_params, _session, socket) do

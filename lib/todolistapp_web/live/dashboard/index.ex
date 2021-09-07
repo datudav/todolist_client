@@ -17,8 +17,9 @@ defmodule TodolistappWeb.Dashboard.Index do
     {:noreply, apply_action(socket, :new, params)}
   end
 
-  def handle_event("list_tasks", params, socket) do
-
+  def handle_event("list_tasks", %{"id" => list_id}, socket) do
+    IO.inspect(socket)
+    {:noreply, push_redirect(socket, to: Routes.list_path(socket, :index, %{"list_id" => list_id}))}
   end
 
   # def handle_event("delete", %{"id" => id}, socket) do

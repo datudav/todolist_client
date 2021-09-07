@@ -1,0 +1,29 @@
+<div>
+    <div class="text-left m-1.5 border-0 rounded-none grid grid-cols-10">
+    <div class="col-span-2 pl-2 pb-4">TITLE</div>
+    <div class="col-span-8 pl-2 pb-4">DESCRIPTION</div>
+    <%= if length(@tasks["data"]) > 0 do %>
+        <%= for task <- @tasks["data"] do %>
+        <div id="<%= task["task_id"] %>" class="group hover:bg-gray-200 col-span-10 grid grid-cols-10 pl-2 py-2 border-b-2 ">
+            <p class="col-span-2 group-hover:bg-gray-200"><%= task["title"] %></p>
+            <p class="col-span-6 group-hover:bg-gray-200"><%= task["description"] %></p>
+        </div>
+        <% end %>
+    <% end %>
+</div>
+<div class="mt-10 mr-10 float-right">
+    <%= form_for :add_task, "#", as: :add_task, phx_submit: "add_task"%>
+        <%= submit "+", class: "phx-modal-button-input"%>
+    </form>
+</div>
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, TodolistappWeb.List.FormComponent,
+    id: @task.task_id || :new,
+    title: @page_title,
+    action: @live_action,
+    task: @task,
+    access_token: @access_token,
+    list_id: @list_id,
+    user_id: @user_id,
+    return_to: Routes.list_path(@socket, :index, %{"list_id" => @list_id}) %>
+<% end %>

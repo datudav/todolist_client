@@ -1,0 +1,18 @@
+
+<div class="main-content">
+  <div>
+      <p class="text-6xl py-2 my-2 font-bold"><%= @list_title %></p>
+  </div>
+  <div>
+    <%= live_render @conn, TodolistappWeb.List.Index,
+      id: "dashboard_index",
+      session: %{
+        "access_token" => @access_token,
+        "tasks" => @tasks,
+        "user_id" => @user_id,
+        "list_id" => @list_id,
+        "csrf_token" => Phoenix.Controller.get_csrf_token()
+      }
+    %>
+  </div>
+</div>
